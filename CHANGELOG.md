@@ -33,6 +33,8 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). E
 - DEF-01: las fuentes WOFF2 se servían como `application/octet-stream` dentro de la imagen.
 - DEF-02: el resumen del tablero no usaba el plural ("2 pendiente").
 - DEF-03: el aviso de código incorrecto no identificaba el pedido.
+- DEF-04: enlaces de la barra, botón «Registrarme», campos de cantidad, «Ver productos» y
+  «Seguir agregando» medían menos de 44 px de alto en el celular (RNF-02).
 - Rutas alternativas sin prueba detectadas por el Quality Gate (cobertura del código nuevo
   75,9 %): 9 pruebas de sistema nuevas; cobertura total 97,2 %.
 
