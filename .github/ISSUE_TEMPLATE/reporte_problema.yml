@@ -1,0 +1,47 @@
+name: Reporte de problema (defecto)
+description: Anomalía encontrada en pruebas, análisis o uso, con datos para reproducirla.
+title: "DEF-XX: "
+labels: ["defecto"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Versión o commit
+      placeholder: "v1.0.0 o 7062db0"
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Pasos para reproducir
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+  - type: textarea
+    id: obtenido
+    attributes:
+      label: Resultado obtenido
+      description: Incluye la evidencia (captura, salida de la prueba o del registro).
+    validations:
+      required: true
+  - type: dropdown
+    id: severidad
+    attributes:
+      label: Severidad
+      options: ["Crítico: el sistema falla", "Fatal: resultados erróneos", "No fatal: afecta el rendimiento o la experiencia", "Cosmético: textos o mensajes poco claros"]
+    validations:
+      required: true
+  - type: dropdown
+    id: fase
+    attributes:
+      label: Fase de origen
+      options: ["Requisitos", "Diseño", "Codificación", "Pruebas", "Despliegue"]
+  - type: textarea
+    id: causa
+    attributes:
+      label: Análisis de la causa (lo completa quien corrige)
