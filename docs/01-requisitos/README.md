@@ -2,10 +2,11 @@
 
 Fuente: especificación del cliente v1.0 (27-10-2026), «Gestión de pedidos de una cafetería
 universitaria». Este documento la convierte en requisitos verificables: historias de usuario con
-criterios de aceptación, requisitos no funcionales medibles y las aclaraciones que la
+criterios de aceptación, los requisitos funcionales que se derivan de ellas, requisitos no funcionales medibles y las aclaraciones que la
 especificación pide resolver antes de implementar (§10).
 
 - [Historias de usuario y criterios de aceptación](historias-usuario.md) (11 HU, 37 criterios)
+- [Requisitos funcionales](requisitos-funcionales.md) (29 RF derivados de las HU, con sus criterios y casos de prueba)
 - [Matriz de trazabilidad](matriz-trazabilidad.md): requisito → HU → Issue → caso de prueba → código → PR
 
 ## 1.1 Alcance del Release 1.0
@@ -41,7 +42,27 @@ datos ([diseño](../02-diseno/README.md)). La matriz indica la función exacta y
 | RN-NEG-06 | Pendiente → En preparación → Listo para retirar → Entregado | Tabla de transiciones; saltos y retrocesos lanzan `TransicionNoPermitida` |
 | RN-NEG-07 | Entregado solo desde Listo y con el código | `Pedido.entregar` compara el código normalizado |
 
-## 1.4 Requisitos no funcionales
+## 1.4 Requisitos funcionales
+
+Los [29 requisitos funcionales](requisitos-funcionales.md) expresan como obligaciones del sistema
+(«El sistema debe…») lo que exigen los criterios de aceptación de cada historia. Cada RF indica los
+criterios de los que sale y se verifica con sus casos de prueba; entre todos cubren los 37 criterios.
+
+| HU | Requisitos funcionales |
+|---|---|
+| HU-01 Consultar el menú | [RF-01](requisitos-funcionales.md#rf-01) a [RF-03](requisitos-funcionales.md#rf-03) |
+| HU-02 Armar el pedido | [RF-04](requisitos-funcionales.md#rf-04) a [RF-06](requisitos-funcionales.md#rf-06) |
+| HU-03 Conocer el total antes de confirmar | [RF-07](requisitos-funcionales.md#rf-07) y [RF-08](requisitos-funcionales.md#rf-08) |
+| HU-04 Confirmar el pedido y recibir el código | [RF-09](requisitos-funcionales.md#rf-09) a [RF-11](requisitos-funcionales.md#rf-11) |
+| HU-05 Consultar el estado de mis pedidos | [RF-12](requisitos-funcionales.md#rf-12) a [RF-14](requisitos-funcionales.md#rf-14) |
+| HU-06 Registrarme e ingresar | [RF-15](requisitos-funcionales.md#rf-15) a [RF-18](requisitos-funcionales.md#rf-18) |
+| HU-07 Mantener el menú | [RF-19](requisitos-funcionales.md#rf-19) a [RF-21](requisitos-funcionales.md#rf-21) |
+| HU-08 Ver los pedidos por estado | [RF-22](requisitos-funcionales.md#rf-22) y [RF-23](requisitos-funcionales.md#rf-23) |
+| HU-09 Registrar el avance de un pedido | [RF-24](requisitos-funcionales.md#rf-24) y [RF-25](requisitos-funcionales.md#rf-25) |
+| HU-10 Entregar el pedido verificando el código | [RF-26](requisitos-funcionales.md#rf-26) y [RF-27](requisitos-funcionales.md#rf-27) |
+| HU-11 Ingresar como personal | [RF-28](requisitos-funcionales.md#rf-28) y [RF-29](requisitos-funcionales.md#rf-29) |
+
+## 1.5 Requisitos no funcionales
 
 | ID | Requisito | Criterio verificable |
 |---|---|---|
@@ -53,7 +74,7 @@ datos ([diseño](../02-diseno/README.md)). La matriz indica la función exacta y
 | RNF-06 | Estados reconocibles | Texto, ícono y color en cada estado; contraste ≥ 4,5:1 (WCAG 2.1 AA [16]) |
 | RNF-07 | Disponibilidad observable | `GET /health` responde `{"estado": "ok"}` y el contenedor reporta su salud a Docker |
 
-## 1.5 Supuestos y aclaraciones
+## 1.6 Supuestos y aclaraciones
 
 La especificación pide aclarar las ambigüedades antes de implementar (§10). El equipo propuso estos
 supuestos el 24-11-2026; A1, A7 y A8 se discutieron y confirmaron explícitamente.
@@ -72,7 +93,7 @@ supuestos el 24-11-2026; A1, A7 y A8 se discutieron y confirmaron explícitament
 | A10 | Carrito | La selección no se guarda hasta confirmar; un *pedido* existe solo cuando se confirma (glosario) | Aplicado |
 | A11 | Hora | Fecha de registro en hora de Ecuador (UTC−05:00, sin horario de verano) | Aplicado |
 
-## 1.6 Glosario
+## 1.7 Glosario
 
 | Término | Definición |
 |---|---|
@@ -83,7 +104,7 @@ supuestos el 24-11-2026; A1, A7 y A8 se discutieron y confirmaron explícitament
 | Estado de pedido | Etapa de atención: Pendiente, En preparación, Listo para retirar o Entregado |
 | Detalle del pedido | Producto incluido en un pedido, con su cantidad y el precio considerado |
 
-## 1.7 Fundamento
+## 1.8 Fundamento
 
 - Historias, criterios de aceptación verificables y evidencia trazable (Issue, caso de prueba y PR)
   siguen el ejemplo HU-07 de la semana 5 [6].
