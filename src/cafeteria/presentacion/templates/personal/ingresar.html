@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titulo %}Ingreso del personal · CaféPoli{% endblock %}
+{% block barra %}{% include "personal/_barra.html" %}{% endblock %}
+{% block contenido %}
+<h1 class="titulo">Ingreso del personal</h1>
+<form method="post" action="/personal/ingresar" class="formulario">
+  <div class="campo">
+    <label for="usuario">Usuario</label>
+    <input id="usuario" name="usuario" value="{{ usuario }}" autocomplete="username" required>
+  </div>
+  <div class="campo">
+    <label for="clave">Clave</label>
+    <input id="clave" name="clave" type="password" autocomplete="current-password" required>
+  </div>
+  <button type="submit" class="boton boton-principal boton-ancho">Ingresar</button>
+</form>
+{% endblock %}

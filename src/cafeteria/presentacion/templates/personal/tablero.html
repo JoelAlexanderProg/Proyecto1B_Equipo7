@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icono, estado as pastilla %}
+{% block titulo %}Tablero de pedidos · CaféPoli{% endblock %}
+{% block tipo %}personal{% endblock %}
+{% block atributos_body %} data-recargar="{{ recarga }}"{% endblock %}
+{% block barra %}{% include "personal/_barra.html" %}{% endblock %}
+{% block contenido %}
+<div class="cabecera">
+  <h1 class="titulo">Pedidos</h1>
+  <div class="resumen" aria-label="Resumen">
+    {% set nombres = {
+      "PENDIENTE": ("pendiente", "pendientes"),
+      "EN_PREPARACION": ("en preparación", "en preparación"),
+      "LISTO_PARA_RETIRAR": ("listo para retirar", "listos para retirar"),
+    } %}
+    {% for e, pedidos in columnas.items() %}
+    <span class="estado estado-{{ e.value|lower }}">{{ icono(e.value) }}{{ pedidos|length }} {{ nombres[e.value][0 if pedidos|length == 1 else 1] }}</span>
+    {% endfor %}
+    <span class="estado estado-entregado">{{ icono("ENTREGADO") }}{{ entregados_hoy }} {{ "entregado" if entregados_hoy == 1 else "entregados" }} hoy</span>
+  </div>
+</div>
+<div class="columnas">
+  {% for e, pedidos in columnas.items() %}
+  <section class="columna" aria-labelledby="columna-{{ e.value|lower }}">
+    <div class="columna-cabecera"><h2 id="columna-{{ e.value|lower }}">{{ pastilla(e) }}</h2><span class="contador">{{ pedidos|length }}</span></div>
+    {% for p in pedidos %}
+    {% set cliente = clientes[p.cliente_id] %}
+    <article class="orden" id="pedido-{{ p.id }}">
+      <div class="orden-cabecera">
+        <span class="orden-codigo">{{ p.codigo_retiro }}</span>
+        <span class="orden-hora">{{ p.fecha_registro|hora }}{% if e == EstadoPedido.LISTO_PARA_RETIRAR %} · listo {{ p.fecha_listo|hora }}{% endif %}</span>
+      </div>
+      <ul class="orden-items">
+        {% for d in p.detalles %}<li><b>{{ d.cantidad }}</b>{{ d.producto_nombre }}</li>{% endfor %}
+      </ul>
+      <div class="orden-pie">
+        <span class="orden-cliente">{{ cliente.nombre_corto if cliente else "Cliente" }} · <b>{{ p.total|dinero }}</b></span>
+        {% if e == EstadoPedido.LISTO_PARA_RETIRAR %}
+        <form method="post" action="/personal/pedidos/{{ p.id }}/entregar" class="entregar">
+          <label for="codigo-{{ p.id }}">Código que presenta el cliente</label>
+          <div class="entregar-fila">
+            <input type="text" id="codigo-{{ p.id }}" name="codigo" placeholder="XXX-XXX" maxlength="8" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+            <button type="submit" class="boton boton-principal">Entregar</button>
+          </div>
+        </form>
+        {% else %}
+        <form method="post" action="/personal/pedidos/{{ p.id }}/avanzar">
+          <button type="submit" class="boton boton-oscuro boton-ancho">{{ "Iniciar preparación" if e == EstadoPedido.PENDIENTE else "Marcar listo para retirar" }}</button>
+        </form>
+        {% endif %}
+      </div>
+    </article>
+    {% else %}
+    <p class="columna-vacia">Sin pedidos {{ e.etiqueta|lower }}.</p>
+    {% endfor %}
+  </section>
+  {% endfor %}
+</div>
+<p class="subtitulo">El tablero se actualiza cada {{ recarga }} segundos, salvo mientras escribes un código.</p>
+{% endblock %}

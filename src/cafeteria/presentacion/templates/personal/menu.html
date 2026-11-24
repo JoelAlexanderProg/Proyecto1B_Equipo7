@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block titulo %}Menú · Personal · CaféPoli{% endblock %}
+{% block tipo %}personal{% endblock %}
+{% block barra %}{% include "personal/_barra.html" %}{% endblock %}
+{% block contenido %}
+<h1 class="titulo">Menú</h1>
+<div class="disposicion-menu">
+  <div class="tabla-contenedor">
+    <table>
+      <thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th class="numero">Precio</th><th>Estado</th><th><span class="oculto">Acciones</span></th></tr></thead>
+      <tbody>
+        {% for p in productos %}
+        <tr>
+          <td class="mono">{{ p.codigo }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.categoria.etiqueta }}</td>
+          <td class="numero">{{ p.precio|dinero }}</td>
+          <td>{% if p.disponible %}<span class="disponible-si">Disponible</span>{% else %}<span class="disponible-no">No disponible</span>{% endif %}</td>
+          <td>
+            <div class="acciones">
+              <form method="post" action="/personal/menu/{{ p.codigo }}/disponibilidad" class="en-linea">
+                <input type="hidden" name="disponible" value="{{ '0' if p.disponible else '1' }}">
+                <button type="submit" class="boton boton-secundario boton-chico">{{ "Marcar no disponible" if p.disponible else "Marcar disponible" }}</button>
+              </form>
+              <a class="boton boton-secundario boton-chico" href="/personal/menu/{{ p.codigo }}">Editar</a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <form method="post" action="/personal/menu" class="formulario">
+    <h2>Agregar producto</h2>
+    {% include "personal/_campos_producto.html" %}
+    <button type="submit" class="boton boton-principal boton-ancho">Agregar al menú</button>
+  </form>
+</div>
+{% endblock %}

@@ -28,7 +28,7 @@ from cafeteria.infraestructura.repositorios import (
     RepositorioProductosSQLite,
 )
 from cafeteria.infraestructura.semilla import cargar_menu_inicial
-from cafeteria.presentacion import rutas_api, rutas_cliente
+from cafeteria.presentacion import rutas_api, rutas_cliente, rutas_personal
 from cafeteria.presentacion.dependencias import Servicios
 from cafeteria.presentacion.plantillas import mostrar
 
@@ -88,6 +88,7 @@ def crear_app(config: Configuracion | None = None) -> FastAPI:
     )
     app.mount("/static", StaticFiles(directory=Path(__file__).parent / "static"), name="static")
     app.include_router(rutas_cliente.router)
+    app.include_router(rutas_personal.router)
     app.include_router(rutas_api.router)
 
     @app.exception_handler(StarletteHTTPException)

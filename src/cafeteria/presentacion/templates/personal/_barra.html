@@ -1,0 +1,14 @@
+<header class="barra">
+  <div class="barra-interior">
+    <a class="marca" href="/personal">CaféPoli<small>Personal</small></a>
+    {% if seccion %}
+    <nav class="pestanas" aria-label="Secciones del personal">
+      <a href="/personal"{% if seccion == "pedidos" %} aria-current="page"{% endif %}>Pedidos</a>
+      <a href="/personal/menu"{% if seccion == "menu" %} aria-current="page"{% endif %}>Menú</a>
+    </nav>
+    <div class="barra-nav">
+      <form method="post" action="/personal/salir" class="en-linea"><button type="submit" class="enlace">Salir</button></form>
+    </div>
+    {% endif %}
+  </div>
+</header>
