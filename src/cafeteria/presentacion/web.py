@@ -97,6 +97,7 @@ def crear_app(config: Configuracion | None = None) -> FastAPI:
 
     @app.exception_handler(StarletteHTTPException)
     async def pagina_de_error(request: Request, error: StarletteHTTPException):
+        """Responde los errores HTTP: JSON bajo /api/ y una página amigable en el resto."""
         if request.url.path.startswith("/api/"):
             return JSONResponse({"detail": error.detail}, status_code=error.status_code)
         mensaje = "No encontramos esa página." if error.status_code == 404 else error.detail
@@ -104,6 +105,7 @@ def crear_app(config: Configuracion | None = None) -> FastAPI:
 
     @app.exception_handler(ErrorDeNegocio)
     async def error_de_negocio(request: Request, error: ErrorDeNegocio):
+        """Muestra una regla de negocio que ninguna ruta atendió, sin exponer detalles internos."""
         return mostrar(request, "error.html", {"mensaje": error.mensaje}, status_code=400)
 
     return app
