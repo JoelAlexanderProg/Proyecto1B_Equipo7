@@ -7,7 +7,7 @@ línea base.
 
 | N.º | Entregable | Documento |
 |---|---|---|
-| 1 | Documentación de requisitos | [01-requisitos](01-requisitos/README.md): alcance, [historias de usuario](01-requisitos/historias-usuario.md), reglas, requisitos no funcionales, supuestos y [matriz de trazabilidad](01-requisitos/matriz-trazabilidad.md) |
+| 1 | Documentación de requisitos | [01-requisitos](01-requisitos/README.md): alcance, [historias de usuario](01-requisitos/historias-usuario.md), [requisitos funcionales](01-requisitos/requisitos-funcionales.md), reglas, requisitos no funcionales, supuestos y [matriz de trazabilidad](01-requisitos/matriz-trazabilidad.md) |
 | 2 | Documentación de diseño | [02-diseno](02-diseno/README.md): arquitectura, diagramas y [decisiones de arquitectura (ADR)](02-diseno/adr.md) |
 | 3 | Ambiente de desarrollo y flujo de trabajo | [03-ambiente-desarrollo](03-ambiente-desarrollo/README.md) y [flujo de trabajo](03-ambiente-desarrollo/flujo-de-trabajo.md) |
 | 4 | Documentación técnica del código | [04-documentacion-tecnica](04-documentacion-tecnica/README.md) y [referencia HTML](04-documentacion-tecnica/html/cafeteria.html) |
