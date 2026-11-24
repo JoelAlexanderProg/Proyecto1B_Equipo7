@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block titulo %}Editar {{ producto.nombre }} · CaféPoli{% endblock %}
+{% block tipo %}personal{% endblock %}
+{% block barra %}{% include "personal/_barra.html" %}{% endblock %}
+{% block contenido %}
+<a class="volver" href="/personal/menu">‹ Volver al menú</a>
+<h1 class="titulo">Editar <span class="mono">{{ producto.codigo }}</span></h1>
+<form method="post" action="/personal/menu/{{ producto.codigo }}" class="formulario formulario-angosto">
+  {% include "personal/_campos_producto.html" %}
+  <p class="info">Cambiar el precio no modifica los pedidos ya confirmados: cada pedido conserva el precio con el que se confirmó.</p>
+  <button type="submit" class="boton boton-principal boton-ancho">Guardar cambios</button>
+</form>
+{% endblock %}

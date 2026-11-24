@@ -1,0 +1,18 @@
+<div class="campo">
+  <label for="nombre">Nombre</label>
+  <input id="nombre" name="nombre" value="{{ datos.nombre or '' }}" maxlength="60" required>
+</div>
+<div class="fila-campos">
+  <div class="campo">
+    <label for="categoria">Categoría</label>
+    <select id="categoria" name="categoria" required>
+      <option value="ALIMENTO"{% if datos.categoria == "ALIMENTO" %} selected{% endif %}>Alimentos</option>
+      <option value="BEBIDA"{% if datos.categoria == "BEBIDA" %} selected{% endif %}>Bebidas</option>
+    </select>
+  </div>
+  <div class="campo">
+    <label for="precio">Precio (USD)</label>
+    <input id="precio" name="precio" value="{{ datos.precio or '' }}" inputmode="decimal" placeholder="1,50" required>
+  </div>
+</div>
+<label class="casilla"><input type="checkbox" name="disponible" value="1"{% if datos.disponible %} checked{% endif %}> Disponible para nuevos pedidos</label>
