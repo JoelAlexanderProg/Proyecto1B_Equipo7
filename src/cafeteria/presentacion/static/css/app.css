@@ -54,6 +54,9 @@ button, input, select { font: inherit; color: inherit; }
 .enlace { background: none; border: 0; padding: 0; color: var(--marca); font-weight: 600; cursor: pointer; }
 .en-linea { display: inline; margin: 0; }
 
+/* Objetivos táctiles de al menos 44 px en la barra (RNF-02, DEF-04) */
+.marca, .barra-nav a, .enlace { min-height: 44px; display: inline-flex; align-items: center; }
+
 /* Contenido */
 .contenido { max-width: var(--ancho); margin: 0 auto; padding: 18px 16px 120px; display: grid; gap: 16px; }
 body.personal .contenido { padding-bottom: 32px; }
@@ -74,7 +77,7 @@ body.personal .contenido { padding-bottom: 32px; }
 .boton-claro { background: var(--superficie); color: var(--tinta); }
 .boton-secundario { background: var(--superficie); color: var(--tinta); border-color: var(--linea); }
 .boton-ancho { width: 100%; }
-.boton-chico { min-height: 36px; padding: 6px 12px; font-size: 13px; }
+.boton-chico { min-height: 44px; padding: 8px 12px; font-size: 13px; }
 
 /* Estados: color + ícono + texto */
 .estado-pendiente { --c: var(--pendiente); --cf: var(--pendiente-fondo); }
@@ -95,7 +98,7 @@ body.personal .contenido { padding-bottom: 32px; }
 .no-disponible .producto-nombre { color: var(--tenue); text-decoration: line-through; }
 .etiqueta-no { font-size: 13px; color: var(--tenue); font-weight: 600; padding-right: 4px; }
 .cantidad { display: flex; align-items: center; border: 1px solid var(--linea); border-radius: 999px; }
-.cantidad input { width: 36px; text-align: center; border: 0; background: transparent; font-weight: 700; font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield; }
+.cantidad input { width: 36px; height: 44px; text-align: center; border: 0; background: transparent; font-weight: 700; font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield; }
 .cantidad input::-webkit-outer-spin-button, .cantidad input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .paso { width: 44px; height: 44px; border: 0; background: transparent; color: var(--marca); font-size: 21px; font-weight: 700; cursor: pointer; border-radius: 999px; }
 .carrito { position: fixed; left: 0; right: 0; bottom: 0; padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: center; pointer-events: none; }
@@ -105,7 +108,7 @@ body.personal .contenido { padding-bottom: 32px; }
 .carrito-resumen strong { font-family: var(--fuente-titulo); font-size: 21px; font-variant-numeric: tabular-nums; }
 
 /* Revisión */
-.volver { font-weight: 600; text-decoration: none; }
+.volver { font-weight: 600; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; justify-self: start; }
 .lineas { list-style: none; margin: 0; padding: 2px 14px; background: var(--superficie); border: 1px solid var(--linea); border-radius: var(--radio); }
 .lineas li { display: flex; gap: 10px; align-items: baseline; padding: 11px 0; border-bottom: 1px dashed var(--linea); }
 .lineas li:last-child { border-bottom: 0; }
@@ -140,7 +143,7 @@ body.personal .contenido { padding-bottom: 32px; }
 .paso-estado.hecho .punto { background: var(--listo-fondo); color: var(--listo); }
 .paso-estado.actual .punto { background: var(--cf); color: var(--c); box-shadow: 0 0 0 3px var(--superficie), 0 0 0 5px var(--cf); }
 .paso-estado.actual .paso-nombre { color: var(--c); }
-.detalle summary { cursor: pointer; font-weight: 600; color: var(--marca); padding: 4px 0 8px; }
+.detalle summary { cursor: pointer; font-weight: 600; color: var(--marca); min-height: 44px; padding: 11px 0; }
 
 /* Mis pedidos */
 .lista-pedidos { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
