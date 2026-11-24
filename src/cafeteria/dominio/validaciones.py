@@ -98,8 +98,10 @@ def validar_correo_institucional(valor: str, dominio: str) -> str:
     """
     correo = valor.strip().lower()
     usuario, separador, dominio_correo = correo.partition("@")
-    if not separador or dominio_correo != dominio.lower() or not _PATRON_USUARIO_CORREO.fullmatch(
-        usuario
+    if (
+        not separador
+        or dominio_correo != dominio.lower()
+        or not _PATRON_USUARIO_CORREO.fullmatch(usuario)
     ):
         raise DatoInvalido(f"Usa tu correo institucional (usuario@{dominio}).")
     return correo
