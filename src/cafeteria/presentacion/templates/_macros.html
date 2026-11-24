@@ -1,0 +1,7 @@
+{% macro icono(nombre) -%}
+<svg class="icono" aria-hidden="true" focusable="false"><use href="#i-{{ nombre|lower }}"></use></svg>
+{%- endmacro %}
+
+{% macro estado(valor) -%}
+<span class="estado estado-{{ valor.value|lower }}">{{ icono(valor.value) }}{{ valor.etiqueta }}</span>
+{%- endmacro %}

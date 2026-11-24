@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icono, estado as pastilla %}
+{% block titulo %}Pedido {{ pedido.codigo_retiro }} · CaféPoli{% endblock %}
+{% block atributos_body %}{% if pedido.estado != EstadoPedido.ENTREGADO %} data-recargar="20"{% endif %}{% endblock %}
+{% block barra %}{% include "cliente/_barra.html" %}{% endblock %}
+{% block contenido %}
+<div class="cabecera"><h1 class="titulo">Tu pedido</h1>{{ pastilla(pedido.estado) }}</div>
+<section class="ticket" aria-label="Código de retiro">
+  <span class="ticket-etiqueta">Código de retiro</span>
+  <p class="codigo">{{ pedido.codigo_retiro }}</p>
+  <span class="ticket-ayuda">Muéstralo en el mostrador para retirar tu pedido</span>
+  <div class="perforado"></div>
+  <div class="ticket-meta"><span>Registrado <b>{{ pedido.fecha_registro|hora }}</b></span><span>Total <b>{{ pedido.total|dinero }}</b></span></div>
+</section>
+<ol class="seguimiento" aria-label="Seguimiento del pedido">
+  {% for e in estados %}
+  {% set momento = pedido.fecha_de(e) %}
+  <li class="paso-estado estado-{{ e.value|lower }} {% if e == pedido.estado %}actual{% elif momento %}hecho{% else %}futuro{% endif %}"{% if e == pedido.estado %} aria-current="step"{% endif %}>
+    <span class="punto">{{ icono(e.value) }}</span>
+    <span class="paso-nombre">{{ e.etiqueta }}</span>
+    <span class="paso-hora">{{ momento|hora }}</span>
+  </li>
+  {% endfor %}
+</ol>
+<details class="detalle">
+  <summary>Ver productos ({{ pedido.cantidad_articulos }})</summary>
+  <ul class="lineas">
+    {% for d in pedido.detalles %}
+    <li><span class="linea-cant">{{ d.cantidad }}×</span><span class="linea-nombre">{{ d.producto_nombre }}</span><span class="linea-monto">{{ d.subtotal|dinero }}</span></li>
+    {% endfor %}
+  </ul>
+</details>
+{% if pedido.estado != EstadoPedido.ENTREGADO %}<p class="subtitulo">Esta pantalla se actualiza sola cada 20 segundos.</p>{% endif %}
+<a class="boton boton-secundario boton-ancho" href="/mis-pedidos">Ver mis pedidos</a>
+{% endblock %}

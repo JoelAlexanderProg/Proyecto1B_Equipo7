@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "cafeteria"
 version = "1.0.0"
@@ -16,8 +20,23 @@ dependencies = [
 dev = [
     "pytest==9.2.0",
     "pytest-cov==7.1.0",
-    "httpx==0.28.1",
+    "httpx2==2.16.2",
     "ruff==0.17.6",
+]
+
+[project.scripts]
+cafepoli = "cafeteria.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cafeteria = [
+    "presentacion/templates/*.html",
+    "presentacion/templates/*/*.html",
+    "presentacion/static/css/*.css",
+    "presentacion/static/js/*.js",
+    "presentacion/static/fonts/*",
 ]
 
 [tool.pytest.ini_options]

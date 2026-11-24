@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "_macros.html" import estado as pastilla %}
+{% block titulo %}Mis pedidos · CaféPoli{% endblock %}
+{% block barra %}{% include "cliente/_barra.html" %}{% endblock %}
+{% block contenido %}
+<h1 class="titulo">Mis pedidos</h1>
+{% if pedidos %}
+<ul class="lista-pedidos">
+  {% for p in pedidos %}
+  <li>
+    <a class="tarjeta-pedido" href="/pedidos/{{ p.codigo_retiro }}">
+      <span class="codigo-mini">{{ p.codigo_retiro }}</span>
+      {{ pastilla(p.estado) }}
+      <small>{{ p.fecha_registro|fecha }} · {{ p.cantidad_articulos }} artículo{{ 's' if p.cantidad_articulos != 1 }}</small>
+      <small><b>{{ p.total|dinero }}</b></small>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="vacio">Todavía no tienes pedidos. <a href="/">Ver el menú</a></p>
+{% endif %}
+{% endblock %}

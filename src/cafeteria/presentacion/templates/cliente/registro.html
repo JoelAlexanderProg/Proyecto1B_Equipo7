@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block titulo %}Registro · CaféPoli{% endblock %}
+{% block barra %}{% include "cliente/_barra.html" %}{% endblock %}
+{% block contenido %}
+<h1 class="titulo">Crear mi cuenta</h1>
+<form method="post" action="/registro" class="formulario">
+  <div class="fila-campos">
+    <div class="campo">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" value="{{ datos.nombre or '' }}" autocomplete="given-name" required>
+    </div>
+    <div class="campo">
+      <label for="apellido">Apellido</label>
+      <input id="apellido" name="apellido" value="{{ datos.apellido or '' }}" autocomplete="family-name" required>
+    </div>
+  </div>
+  <div class="campo">
+    <label for="cedula">Cédula</label>
+    <input id="cedula" name="cedula" value="{{ datos.cedula or '' }}" inputmode="numeric" maxlength="10" required>
+  </div>
+  <div class="campo">
+    <label for="celular">Celular</label>
+    <input id="celular" name="celular" value="{{ datos.celular or '' }}" inputmode="tel" autocomplete="tel" placeholder="09XXXXXXXX" required>
+  </div>
+  <div class="campo">
+    <label for="correo">Correo institucional</label>
+    <input id="correo" name="correo" type="email" value="{{ datos.correo or '' }}" autocomplete="email" placeholder="usuario@{{ dominio }}" required>
+    <small>Con tu correo y tu cédula ingresarás para consultar tus pedidos.</small>
+  </div>
+  <button type="submit" class="boton boton-principal boton-ancho">Crear cuenta</button>
+</form>
+<p class="pie-formulario">¿Ya tienes cuenta? <a href="/ingresar">Ingresa</a></p>
+{% endblock %}

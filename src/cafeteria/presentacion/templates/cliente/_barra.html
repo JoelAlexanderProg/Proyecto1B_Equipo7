@@ -1,0 +1,15 @@
+<header class="barra">
+  <div class="barra-interior">
+    <a class="marca" href="/">CaféPoli</a>
+    <nav class="barra-nav" aria-label="Principal">
+      {% if cliente %}
+        <a href="/mis-pedidos">Mis pedidos</a>
+        <span class="avatar" title="{{ cliente.nombre }} {{ cliente.apellido }} · {{ cliente.codigo }}">{{ cliente.iniciales }}</span>
+        <form method="post" action="/salir" class="en-linea"><button type="submit" class="enlace">Salir</button></form>
+      {% else %}
+        <a href="/ingresar">Ingresar</a>
+        <a href="/registro" class="boton boton-principal boton-chico">Registrarme</a>
+      {% endif %}
+    </nav>
+  </div>
+</header>
