@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titulo %}Menú · CaféPoli{% endblock %}
+{% block barra %}{% include "cliente/_barra.html" %}{% endblock %}
+{% block contenido %}
+<h1 class="titulo">Menú de hoy</h1>
+{% if not cliente %}
+<p class="info">Puedes ver el menú sin cuenta. <a href="/ingresar">Ingresa</a> o <a href="/registro">regístrate</a> para hacer un pedido.</p>
+{% endif %}
+<form method="post" action="/pedido/revisar" id="form-pedido" data-maximo="{{ CANTIDAD_MAXIMA }}" class="grupo">
+  {% for categoria, productos in grupos %}
+  <section class="grupo" aria-labelledby="grupo-{{ categoria.value|lower }}">
+    <h2 class="grupo-titulo" id="grupo-{{ categoria.value|lower }}">{{ categoria.etiqueta }}</h2>
+    <ul class="productos">
+      {% for p in productos %}
+      <li class="producto{% if not p.disponible %} no-disponible{% endif %}">
+        <div class="producto-info">
+          <span class="producto-nombre">{{ p.nombre }}</span>
+          <span class="producto-precio">{{ p.precio|dinero }}</span>
+        </div>
+        {% if not p.disponible %}
+          <span class="etiqueta-no">No disponible</span>
+        {% elif cliente %}
+          <div class="cantidad" data-precio="{{ p.precio }}">
+            <button type="button" class="paso" data-paso="-1" aria-label="Quitar uno: {{ p.nombre }}">−</button>
+            <input type="number" id="cant-{{ p.codigo }}" name="cant-{{ p.codigo }}" value="{{ borrador.get(p.codigo, 0) }}" min="0" max="{{ CANTIDAD_MAXIMA }}" step="1" inputmode="numeric" aria-label="Cantidad de {{ p.nombre }}">
+            <button type="button" class="paso" data-paso="1" aria-label="Agregar uno: {{ p.nombre }}">+</button>
+          </div>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+  {% if cliente %}
+  <div class="carrito">
+    <div class="carrito-caja">
+      <div class="carrito-resumen"><small id="carrito-articulos">Elige tus productos</small><strong id="carrito-total" aria-live="polite">—</strong></div>
+      <button type="submit" class="boton boton-claro">Revisar pedido</button>
+    </div>
+  </div>
+  {% endif %}
+</form>
+{% endblock %}

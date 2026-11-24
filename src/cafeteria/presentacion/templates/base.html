@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}CaféPoli{% endblock %}</title>
+  <link rel="preload" href="/static/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/css/app.css?v={{ VERSION }}">
+</head>
+<body class="{% block tipo %}cliente{% endblock %}"{% block atributos_body %}{% endblock %}>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-pendiente" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="i-en_preparacion" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10h11v4a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z"/><path d="M15.5 11h1.5a2.5 2.5 0 0 1 0 5h-1.5"/><path d="M8.5 3.5v3M12 3.5v3"/></g></symbol>
+    <symbol id="i-listo_para_retirar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16.2 9.6"/></g></symbol>
+    <symbol id="i-entregado" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 8h13l-1 12h-11z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/><path d="M9.5 14l2 2 3.5-3.5"/></g></symbol>
+  </svg>
+  {% block barra %}{% endblock %}
+  <main class="contenido" id="contenido">
+    {% if aviso %}<p class="aviso aviso-{{ aviso.tipo }}" role="status">{{ aviso.texto }}</p>{% endif %}
+    {% if error %}<p class="aviso aviso-error" role="alert">{{ error }}</p>{% endif %}
+    {% block contenido %}{% endblock %}
+  </main>
+  <footer class="pie">CaféPoli {{ VERSION }} · Proyecto IB, ISWD633 · Equipo 7</footer>
+  <script src="/static/js/app.js?v={{ VERSION }}" defer></script>
+</body>
+</html>

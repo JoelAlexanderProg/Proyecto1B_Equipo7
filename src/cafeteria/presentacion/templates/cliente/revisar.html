@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block titulo %}Tu pedido · CaféPoli{% endblock %}
+{% block barra %}{% include "cliente/_barra.html" %}{% endblock %}
+{% block contenido %}
+<a class="volver" href="/">‹ Seguir agregando</a>
+<h1 class="titulo">Tu pedido</h1>
+<ul class="lineas">
+  {% for d in detalles %}
+  <li>
+    <span class="linea-cant">{{ d.cantidad }}×</span>
+    <span class="linea-nombre">{{ d.producto_nombre }}{% if d.cantidad > 1 %}<small>{{ d.precio_unitario|dinero }} c/u</small>{% endif %}</span>
+    <span class="linea-monto">{{ d.subtotal|dinero }}</span>
+  </li>
+  {% endfor %}
+</ul>
+<p class="total"><span>Total</span><strong>{{ total|dinero }}</strong></p>
+<p class="info"><strong>El pago se hace en caja al retirar.</strong> Los precios quedan fijos desde que confirmas.</p>
+<p class="subtitulo">Pedido a nombre de <strong>{{ cliente.nombre }} {{ cliente.apellido }}</strong> ({{ cliente.correo }}).</p>
+<form method="post" action="/pedido/confirmar">
+  <input type="hidden" name="total_revisado" value="{{ total }}">
+  <button type="submit" class="boton boton-principal boton-ancho">Confirmar pedido</button>
+</form>
+{% endblock %}

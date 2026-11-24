@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block titulo %}Algo no salió bien · CaféPoli{% endblock %}
+{% block barra %}
+<header class="barra"><div class="barra-interior"><a class="marca" href="/">CaféPoli</a></div></header>
+{% endblock %}
+{% block contenido %}
+<h1 class="titulo">Algo no salió bien</h1>
+<p class="info">{{ mensaje }}</p>
+<a class="boton boton-secundario" href="/">Volver al menú</a>
+{% endblock %}

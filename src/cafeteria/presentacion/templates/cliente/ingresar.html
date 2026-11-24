@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block titulo %}Ingresar · CaféPoli{% endblock %}
+{% block barra %}{% include "cliente/_barra.html" %}{% endblock %}
+{% block contenido %}
+<h1 class="titulo">Ingresar</h1>
+<form method="post" action="/ingresar" class="formulario">
+  <div class="campo">
+    <label for="correo">Correo institucional</label>
+    <input id="correo" name="correo" type="email" value="{{ datos.correo or '' }}" autocomplete="email" required>
+  </div>
+  <div class="campo">
+    <label for="cedula">Cédula</label>
+    <input id="cedula" name="cedula" inputmode="numeric" maxlength="10" autocomplete="off" required>
+  </div>
+  <button type="submit" class="boton boton-principal boton-ancho">Ingresar</button>
+</form>
+<p class="pie-formulario">¿Primera vez? <a href="/registro">Regístrate</a></p>
+{% endblock %}
