@@ -59,12 +59,19 @@ conservar en la historia qué commits formaron cada cambio, y la rama se borra.
 | [#5](../../../../pull/5) | `chore/plantillas-colaboracion` | Plantillas de Issue y PR, CONTRIBUTING, CHANGELOG | ✅ |
 | [#6](../../../../pull/6) | `chore/analisis-estatico` | SonarQube y correcciones | ✅ en `main` (ver INC-01) |
 | [#21](../../../../pull/21) | `docs/requisitos-diseno` | Entregables 1 y 2 | ✅ |
+| [#22](../../../../pull/22) | `docs/ambiente-codigo` | Entregables 3 y 4 | ✅ |
+| [#23](../../../../pull/23) | `chore/preparar-release-1.0.0` | Docstrings faltantes y CHANGELOG 1.0.0 | ✅ *auto-merge* tras la CI |
+| [#25](../../../../pull/25) | `fix/DEF-04-objetivos-tactiles` | Corrige DEF-04; cierra la Issue #24 | ✅ *auto-merge* tras la CI |
+| — | etiqueta [`v1.0.0`](../../../../releases/tag/v1.0.0) | Línea base del Release 1.0 sobre `46a63f9` | ✅ |
+| [#26](../../../../pull/26) | `main` → `documentacion` | Sincronización con la línea base | ✅ |
+| [#27](../../../../pull/27) | `docs/pruebas-analisis-manuales` | Entregables 5 a 8 | ✅ |
 
 Las historias de usuario están registradas como Issues [#7 a #17](../../../../issues?q=label%3A%22historia+de+usuario%22)
 y los defectos como [#18 a #20](../../../../issues?q=label%3Adefecto). Se registraron al consolidar
 la documentación, después de implementar, y se enlazaron a los PR que las atendieron. Por eso los
-PR #1 a #4 no las citan. Desde ahora, cada cambio empieza en una Issue, como establece
-`CONTRIBUTING.md`.
+PR #1 a #4 no las citan. DEF-04 ya siguió el flujo completo: Issue [#24](../../../../issues/24) →
+rama `fix/DEF-04-objetivos-tactiles` → PR #25 con `Closes #24` → CI → *auto-merge* → nueva
+ejecución del caso. Así será cada cambio a partir del Release 1.0, como establece `CONTRIBUTING.md`.
 
 **Revisión.** Todo el trabajo se hizo desde la cuenta de un integrante, y GitHub no permite aprobar
 un PR propio. La revisión quedó registrada en la descripción de cada PR (cambios, evidencia y lista
