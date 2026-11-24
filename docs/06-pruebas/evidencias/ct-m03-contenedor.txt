@@ -1,0 +1,13 @@
+CT-M03 · Instalación y salud del contenedor · ejecución 2 · 24-11-2026 09:56
+Commit: 46a63f9 · comando: docker compose up -d --build
+
+estado=running salud=healthy reinicio=unless-stopped memoria=268435456 cpus=500000000 usuario=cafeteria
+volumen: cafeteria-data -> /app/data
+GET /health -> {"estado":"ok","version":"1.0.0"}
+GET / -> 200 text/html; charset=utf-8
+GET /personal/ingresar -> 200 text/html; charset=utf-8
+GET /docs -> 200 text/html; charset=utf-8
+GET /static/fonts/inter.woff2 -> 200 font/woff2
+GET /static/css/app.css -> 200 text/css; charset=utf-8
+
+Resultado: aprobado

@@ -1,0 +1,39 @@
+{
+ "medidas": {
+  "complexity": "295",
+  "duplicated_lines_density": "0.0",
+  "software_quality_security_rating": "1.0",
+  "functions": "160",
+  "classes": "34",
+  "software_quality_security_issues": "0",
+  "software_quality_maintainability_remediation_effort": "0",
+  "statements": "1078",
+  "sqale_index": "0",
+  "sqale_rating": "1.0",
+  "bugs": "0",
+  "software_quality_reliability_issues": "0",
+  "branch_coverage": "83.6",
+  "ncloc": "2014",
+  "software_quality_reliability_rating": "1.0",
+  "line_coverage": "91.5",
+  "coverage": "90.5",
+  "reliability_rating": "1.0",
+  "code_smells": "0",
+  "security_rating": "1.0",
+  "comment_lines_density": "26.5",
+  "security_hotspots": "0",
+  "security_review_rating": "1.0",
+  "alert_status": "ERROR",
+  "tests": "104",
+  "cognitive_complexity": "155",
+  "software_quality_maintainability_issues": "0",
+  "files": "40",
+  "vulnerabilities": "0",
+  "software_quality_maintainability_rating": "1.0"
+ },
+ "problemas": [],
+ "hotspots": [],
+ "lenguajes": {
+  "ncloc_language_distribution": "css=169;js=49;py=1403;web=393"
+ }
+}

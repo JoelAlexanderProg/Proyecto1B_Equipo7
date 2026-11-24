@@ -1,0 +1,10 @@
+CT-M04 · Persistencia en el volumen de Docker · ejecución 1 · 24-11-2026 09:55
+Imagen: cafeteria-app:1.0.0 · volumen: cafeteria-capturas
+
+Antes de 'docker rm -f cafepoli-capturas':
+{'productos': 10, 'clientes': 2, 'pedidos': 5, 'detalles_pedido': 10} [('WSX-3T3', 'ENTREGADO'), ('5J9-3RK', 'LISTO_PARA_RETIRAR'), ('SNH-588', 'EN_PREPARACION'), ('KVD-NCG', 'EN_PREPARACION'), ('V8M-K32', 'EN_PREPARACION')]
+
+Después de recrear el contenedor con el mismo volumen:
+{'productos': 10, 'clientes': 2, 'pedidos': 5, 'detalles_pedido': 10} [('WSX-3T3', 'ENTREGADO'), ('5J9-3RK', 'LISTO_PARA_RETIRAR'), ('SNH-588', 'EN_PREPARACION'), ('KVD-NCG', 'EN_PREPARACION'), ('V8M-K32', 'EN_PREPARACION')]
+
+Resultado: datos idénticos (aprobado)
