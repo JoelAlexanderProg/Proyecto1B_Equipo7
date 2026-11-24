@@ -5,6 +5,8 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). E
 
 ## [Sin publicar]
 
+## [1.0.0] - 2026-11-24
+
 ### Agregado
 
 - Dominio con las reglas de negocio RN-NEG-01 a RN-NEG-07: pedidos, estados, código de retiro
@@ -19,8 +21,22 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). E
 - Imagen Docker con healthcheck, `compose.yaml` con volumen nombrado, e integración continua en
   GitHub Actions.
 
+### Cambiado
+
+- Correcciones del análisis de SonarQube (perfil Sonar way comprehensive): constantes para las
+  rutas repetidas, `Number.parseInt` en el JavaScript, `Cliente.con_identidad`, sin
+  `response_model` redundante en la API y una prueba con una sola llamada que puede fallar.
+- Rama `main` protegida: Pull Request obligatorio y CI en verde para integrar.
+
 ### Corregido
 
 - DEF-01: las fuentes WOFF2 se servían como `application/octet-stream` dentro de la imagen.
 - DEF-02: el resumen del tablero no usaba el plural ("2 pendiente").
 - DEF-03: el aviso de código incorrecto no identificaba el pedido.
+- DEF-04: enlaces de la barra, botón «Registrarme», campos de cantidad, «Ver productos» y
+  «Seguir agregando» medían menos de 44 px de alto en el celular (RNF-02).
+- Rutas alternativas sin prueba detectadas por el Quality Gate (cobertura del código nuevo
+  75,9 %): 9 pruebas de sistema nuevas; cobertura total 97,2 %.
+
+[Sin publicar]: https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/releases/tag/v1.0.0
