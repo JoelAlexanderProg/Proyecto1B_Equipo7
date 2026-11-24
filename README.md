@@ -9,6 +9,20 @@ Proyecto IB de ISWD633 Construcción y Evolución de Software (EPN, 2026-B), Equ
   código que presenta el cliente coincide. También mantiene el menú, sus precios y su
   disponibilidad.
 
+## Inicio rápido con Docker
+
+Requisitos: Docker Desktop (o Docker Engine con Compose).
+
+```powershell
+copy .env.example .env      # y define CAFETERIA_CLAVE_PERSONAL
+docker compose up -d --build
+```
+
+Abre <http://localhost:8000>. Los datos se guardan en el volumen `cafeteria-data`, así que
+sobreviven a `docker compose down` y a reconstruir la imagen. El contenedor tiene healthcheck
+contra `/health`, se reinicia solo si se cae (`unless-stopped`) y tiene límites de 256 MB de
+memoria y media CPU.
+
 ## Inicio rápido (local)
 
 Requisitos: Python 3.12.

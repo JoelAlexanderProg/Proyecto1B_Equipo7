@@ -1,0 +1,26 @@
+# Levanta CaféPoli con un comando: docker compose up -d --build
+# Requiere un archivo .env (copia de .env.example) con CAFETERIA_CLAVE_PERSONAL.
+name: cafepoli
+
+services:
+  cafeteria:
+    build: .
+    image: cafeteria-app:1.0.0
+    container_name: cafepoli
+    env_file: .env
+    environment:
+      # Valores propios del contenedor; tienen prioridad sobre los de .env.
+      CAFETERIA_HOST: 0.0.0.0
+      CAFETERIA_PUERTO: "8000"
+      CAFETERIA_BD: /app/data/cafeteria.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - cafeteria-data:/app/data
+    restart: unless-stopped
+    mem_limit: 256m
+    cpus: 0.5
+
+volumes:
+  cafeteria-data:
+    name: cafeteria-data
