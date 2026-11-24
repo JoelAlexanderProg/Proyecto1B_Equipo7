@@ -7,7 +7,6 @@ zona horaria de Ecuador, para evitar errores de redondeo y de comparación.
 import sqlite3
 import uuid
 from collections.abc import Iterable
-from dataclasses import replace
 from datetime import datetime
 from decimal import Decimal
 
@@ -173,7 +172,7 @@ class RepositorioClientesSQLite:
         except sqlite3.IntegrityError:
             mensaje = "Ya existe un cliente con esa cédula o ese correo."
             raise exc.ClienteDuplicado(mensaje) from None
-        return replace(cliente, id=cliente_id, codigo=codigo)
+        return cliente.con_identidad(cliente_id, codigo)
 
     def obtener(self, cliente_id: int) -> Cliente | None:
         """Busca un cliente por su id."""

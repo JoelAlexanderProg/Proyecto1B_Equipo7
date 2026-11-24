@@ -9,7 +9,11 @@ from cafeteria.dominio import excepciones as exc
 from cafeteria.presentacion.dependencias import es_personal, servicios
 from cafeteria.presentacion.plantillas import avisar, mostrar, redirigir
 
-router = APIRouter(prefix="/personal", include_in_schema=False)
+RUTA_TABLERO = "/personal"
+RUTA_INGRESO_PERSONAL = "/personal/ingresar"
+RUTA_MENU_PERSONAL = "/personal/menu"
+
+router = APIRouter(prefix=RUTA_TABLERO, include_in_schema=False)
 
 Campo = Annotated[str, Form()]
 RECARGA_TABLERO = 20
@@ -18,7 +22,7 @@ RECARGA_TABLERO = 20
 
 def _sin_acceso(request: Request) -> Response | None:
     """Devuelve una redirección al ingreso si la sesión no es del personal."""
-    return None if es_personal(request) else redirigir("/personal/ingresar")
+    return None if es_personal(request) else redirigir(RUTA_INGRESO_PERSONAL)
 
 
 @router.get("/ingresar", response_class=HTMLResponse)
@@ -37,14 +41,14 @@ def ingresar(request: Request, usuario: Campo = "", clave: Campo = "") -> Respon
         return mostrar(request, "personal/ingresar.html", contexto, status_code=422)
     request.session.pop("cliente_id", None)
     request.session["personal"] = True
-    return redirigir("/personal")
+    return redirigir(RUTA_TABLERO)
 
 
 @router.post("/salir")
 def salir(request: Request) -> Response:
     """Cierra la sesión del personal."""
     request.session.pop("personal", None)
-    return redirigir("/personal/ingresar")
+    return redirigir(RUTA_INGRESO_PERSONAL)
 
 
 @router.get("", response_class=HTMLResponse)
@@ -75,7 +79,7 @@ def avanzar(request: Request, pedido_id: int) -> Response:
         avisar(request, f"Pedido {pedido.codigo_retiro}: {pedido.estado.etiqueta}.")
     except exc.ErrorDeNegocio as error:
         avisar(request, error.mensaje, "error")
-    return redirigir("/personal")
+    return redirigir(RUTA_TABLERO)
 
 
 @router.post("/pedidos/{pedido_id}/entregar")
@@ -94,7 +98,7 @@ def entregar(request: Request, pedido_id: int, codigo: Campo = "") -> Response:
         avisar(
             request, f"Pedido {codigo_pedido}: no se registró la entrega. {error.mensaje}", "error"
         )
-    return redirigir("/personal")
+    return redirigir(RUTA_TABLERO)
 
 
 def _formulario_producto(contexto: dict, request: Request, status_code: int = 200) -> Response:
@@ -136,7 +140,7 @@ def registrar_producto(
         }
         return _formulario_producto({"datos": datos, "error": error.mensaje}, request, 422)
     avisar(request, f"{producto.nombre} se agregó al menú con el código {producto.codigo}.")
-    return redirigir("/personal/menu")
+    return redirigir(RUTA_MENU_PERSONAL)
 
 
 @router.get("/menu/{codigo}", response_class=HTMLResponse)
@@ -190,7 +194,7 @@ def actualizar_producto(
         }
         return _formulario_producto(contexto, request, 422)
     avisar(request, f"Se guardaron los cambios de {producto.nombre}.")
-    return redirigir("/personal/menu")
+    return redirigir(RUTA_MENU_PERSONAL)
 
 
 @router.post("/menu/{codigo}/disponibilidad")
@@ -204,4 +208,4 @@ def cambiar_disponibilidad(request: Request, codigo: str, disponible: Campo = ""
         raise HTTPException(404) from None
     estado = "disponible" if producto.disponible else "no disponible"
     avisar(request, f"{producto.nombre} ahora está {estado}.")
-    return redirigir("/personal/menu")
+    return redirigir(RUTA_MENU_PERSONAL)

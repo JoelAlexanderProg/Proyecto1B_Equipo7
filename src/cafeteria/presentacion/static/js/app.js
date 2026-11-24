@@ -12,9 +12,9 @@
     let centavos = 0;
     let articulos = 0;
     formulario.querySelectorAll(".cantidad").forEach(function (caja) {
-      const cantidad = Math.max(0, parseInt(caja.querySelector("input").value, 10) || 0);
+      const cantidad = Math.max(0, Number.parseInt(caja.querySelector("input").value, 10) || 0);
       articulos += cantidad;
-      centavos += cantidad * Math.round(parseFloat(caja.dataset.precio) * 100);
+      centavos += cantidad * Math.round(Number.parseFloat(caja.dataset.precio) * 100);
     });
     const total = document.getElementById("carrito-total");
     const resumen = document.getElementById("carrito-articulos");
@@ -24,12 +24,12 @@
 
   const formulario = document.getElementById("form-pedido");
   if (formulario) {
-    const maximo = parseInt(formulario.dataset.maximo, 10) || 20;
+    const maximo = Number.parseInt(formulario.dataset.maximo, 10) || 20;
     formulario.addEventListener("click", function (evento) {
       const boton = evento.target.closest(".paso");
       if (!boton) return;
       const entrada = boton.parentElement.querySelector("input");
-      const valor = (parseInt(entrada.value, 10) || 0) + parseInt(boton.dataset.paso, 10);
+      const valor = (Number.parseInt(entrada.value, 10) || 0) + Number.parseInt(boton.dataset.paso, 10);
       entrada.value = Math.min(maximo, Math.max(0, valor));
       actualizarCarrito(formulario);
     });
@@ -40,7 +40,7 @@
   }
 
   // Recarga periódica sin interrumpir a quien está escribiendo un código.
-  const segundos = parseInt(document.body.dataset.recargar, 10);
+  const segundos = Number.parseInt(document.body.dataset.recargar, 10);
   if (segundos > 0) {
     setInterval(function () {
       const activo = document.activeElement;
