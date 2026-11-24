@@ -1,0 +1,49 @@
+# Matriz de trazabilidad
+
+Vincula cada requisito de usuario (RU) y cada regla de negocio (RN-NEG) de la especificación con su historia de usuario, su Issue, los casos de prueba, el código que lo implementa y el Pull Request. Se recorre en ambos sentidos: de un requisito a su evidencia y de un módulo a los requisitos que afectaría un cambio.
+
+| Requisito | Descripción | HU | Issue | Casos de prueba | Implementación | PR |
+|---|---|---|---|---|---|---|
+| **RU-01** | Consultar el menú con productos disponibles y precios | [HU-01](historias-usuario.md#hu-01) | [#7](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/7) | CT-01.1, CT-01.2, CT-01.3 | `rutas_cliente.ver_menu`, `ServicioMenu.listar`, `GET /api/v1/productos` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2) |
+| **RU-02** | Seleccionar productos y cantidades | [HU-02](historias-usuario.md#hu-02) | [#8](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/8) | CT-02.1, CT-02.2, CT-02.3, CT-02.4 | `rutas_cliente.revisar_pedido`, `leer_cantidades`, `construir_detalles` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2) |
+| **RU-03** | Conocer el importe total antes de confirmar | [HU-03](historias-usuario.md#hu-03) | [#9](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/9) | CT-03.1, CT-03.2, CT-03.3 | `ServicioPedidos.revisar`, `calcular_total`, `rutas_cliente.confirmar_pedido` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2) |
+| **RU-04** | Confirmar y obtener un código de retiro | [HU-04](historias-usuario.md#hu-04) | [#10](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/10) | CT-04.1, CT-04.2, CT-04.3, CT-04.4 | `ServicioPedidos.confirmar`, `Pedido.confirmar`, `generar_codigo_retiro` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2) |
+| **RU-05** | Consultar el estado del pedido | [HU-05](historias-usuario.md#hu-05) | [#11](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/11) | CT-05.1, CT-05.2, CT-05.3 | `rutas_cliente.ver_pedido`, `rutas_cliente.mis_pedidos` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2) |
+| **RU-06** | Registrar o actualizar productos, precios y disponibilidad | [HU-07](historias-usuario.md#hu-07) | [#13](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/13) | CT-07.1, CT-07.2, CT-07.3, CT-07.4 | `ServicioMenu.registrar`, `actualizar`, `cambiar_disponibilidad` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#3](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/3) |
+| **RU-07** | Consultar pedidos y registrar su avance hasta la entrega | [HU-08](historias-usuario.md#hu-08), [HU-09](historias-usuario.md#hu-09), [HU-10](historias-usuario.md#hu-10) | [#14](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/14), [#15](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/15), [#16](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/16) | CT-08.1, CT-08.2, CT-08.3, CT-09.1, CT-09.2, CT-09.3, CT-10.1, CT-10.2, CT-10.3 | `ServicioPedidos.tablero`, `avanzar`, `entregar` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#3](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/3) |
+| **RN-NEG-01** | Al menos un producto; cantidades enteras positivas | [HU-02](historias-usuario.md#hu-02) | [#8](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/8) | CT-02.1, CT-02.2, CT-02.3, CT-02.4 | `validar_cantidad`, `construir_detalles` (máximo 20, supuesto A7) | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2) |
+| **RN-NEG-02** | Solo productos disponibles en nuevos pedidos | [HU-01](historias-usuario.md#hu-01), [HU-02](historias-usuario.md#hu-02) | [#7](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/7), [#8](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/8) | CT-01.1, CT-01.2, CT-01.3, CT-02.1, CT-02.2, CT-02.3, CT-02.4 | `construir_detalles` → `ProductoNoDisponible` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2) |
+| **RN-NEG-03** | Total = Σ precio vigente × cantidad | [HU-03](historias-usuario.md#hu-03) | [#9](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/9) | CT-03.1, CT-03.2, CT-03.3 | `calcular_total`, `Pedido.total`, `DetallePedido.subtotal` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2) |
+| **RN-NEG-04** | El precio del pedido no cambia con el menú | [HU-04](historias-usuario.md#hu-04), [HU-07](historias-usuario.md#hu-07) | [#10](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/10), [#13](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/13) | CT-04.1, CT-04.2, CT-04.3, CT-04.4, CT-07.1, CT-07.2, CT-07.3, CT-07.4 | `DetallePedido` inmutable; columna `precio_unitario_centavos` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2), [#3](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/3) |
+| **RN-NEG-05** | Código de retiro único | [HU-04](historias-usuario.md#hu-04) | [#10](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/10) | CT-04.1, CT-04.2, CT-04.3, CT-04.4 | `generar_codigo_retiro`, `UNIQUE (codigo_retiro)`, reintento en `ServicioPedidos.confirmar` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2) |
+| **RN-NEG-06** | Pendiente → En preparación → Listo → Entregado | [HU-04](historias-usuario.md#hu-04), [HU-09](historias-usuario.md#hu-09) | [#10](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/10), [#15](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/15) | CT-04.1, CT-04.2, CT-04.3, CT-04.4, CT-09.1, CT-09.2, CT-09.3 | `EstadoPedido.siguiente`, `Pedido.avanzar`, control optimista en `actualizar_estado` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#2](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/2), [#3](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/3) |
+| **RN-NEG-07** | Entregado solo desde Listo y con el código | [HU-10](historias-usuario.md#hu-10) | [#16](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/16) | CT-10.1, CT-10.2, CT-10.3 | `Pedido.entregar`, `normalizar_codigo_retiro` | [#1](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/1), [#3](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/3) |
+
+## Requisitos de negocio
+
+| Requisito de negocio | Cómo lo atiende el Release 1.0 | HU |
+|---|---|---|
+| RN-01 Reducir el tiempo de registro en horas pico | El cliente registra su pedido antes de llegar; el personal solo lo prepara | HU-04, HU-08 |
+| RN-02 Conocer productos y precios antes de pedir | Menú público con precios y disponibilidad | HU-01, HU-03 |
+| RN-03 Seguimiento desde la recepción hasta la entrega | Estados con hora de cada etapa, visibles para cliente y personal | HU-05, HU-08, HU-09 |
+| RN-04 Reducir confusiones en la entrega | Código sin caracteres ambiguos y entrega solo si el código coincide | HU-04, HU-10 |
+
+## Requisitos no funcionales
+
+| Requisito | Criterio | Verificación |
+|---|---|---|
+| RNF-01 · Persistencia | Productos, clientes y pedidos se conservan al reiniciar la aplicación o recrear el contenedor. | `test_los_datos_persisten_entre_ejecuciones`, CT-M04 |
+| RNF-02 · Uso desde el celular | Las pantallas del cliente se usan sin desplazamiento horizontal desde 360 px de ancho y con objetivos táctiles de al menos 44 px. | CT-M01 |
+| RNF-03 · Instalación con un comando | Con Docker, la aplicación se instala y ejecuta con `docker compose up -d --build` y un archivo `.env`. | CT-M03 |
+| RNF-04 · Calidad del código | Ruff sin observaciones, Quality Gate de SonarQube aprobado y cobertura de pruebas de al menos 80 %. | CT-M06 |
+| RNF-05 · Credenciales fuera del código | La clave del personal y el secreto de sesión se configuran por variables de entorno; `.env` no se versiona. | `test_clave_del_personal_es_obligatoria` |
+| RNF-06 · Estados reconocibles | Cada estado se muestra con texto, ícono y color, con contraste de al menos 4,5:1 (WCAG 2.1 AA). | CT-M01, CT-M02 |
+| RNF-07 · Disponibilidad observable | `GET /health` responde `{"estado": "ok"}` y el contenedor reporta su salud a Docker. | `test_api_de_productos_y_healthcheck`, `test_fuentes_se_sirven_con_su_tipo`, CT-M03 |
+
+## Defectos
+
+| Defecto | Issue | Caso que lo detectó | Corregido en |
+|---|---|---|---|
+| [DEF-01](../06-pruebas/defectos.md#def-01) | [#18](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/18) | CT-M03 | [#4](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/4) |
+| [DEF-02](../06-pruebas/defectos.md#def-02) | [#19](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/19) | CT-M02 | [#3](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/3) |
+| [DEF-03](../06-pruebas/defectos.md#def-03) | [#20](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/issues/20) | CT-M02 | [#3](https://github.com/JoelAlexanderProg/Proyecto1B_Equipo7/pull/3) |
