@@ -1,0 +1,48 @@
+name: Solicitud de cambio (CR)
+description: Propuesta de nueva característica, mejora funcional o cambio sobre una línea base.
+title: "CR: "
+labels: ["solicitud de cambio"]
+body:
+  - type: input
+    id: solicitante
+    attributes:
+      label: Solicitante
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de cambio
+      options: ["Nueva característica", "Mejora funcional", "Corrección de defecto"]
+    validations:
+      required: true
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: Prioridad
+      options: ["Alta", "Media", "Baja"]
+    validations:
+      required: true
+  - type: textarea
+    id: elementos
+    attributes:
+      label: Ítems de configuración afectados
+      description: Código, documentos, pruebas o configuración que cambiarían.
+    validations:
+      required: true
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Descripción y justificación del cambio
+    validations:
+      required: true
+  - type: textarea
+    id: impacto
+    attributes:
+      label: Análisis de impacto
+      description: Funcionalidad, interfaces, esfuerzo, cronograma, calidad y riesgos.
+  - type: dropdown
+    id: disposicion
+    attributes:
+      label: Disposición (la completa el equipo)
+      options: ["Pendiente", "Aprobado", "Rechazado", "Aplazado"]

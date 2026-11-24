@@ -1,0 +1,31 @@
+name: Historia de usuario
+description: Necesidad de un cliente o del personal, con criterios de aceptación verificables.
+title: "HU-XX: "
+labels: ["historia de usuario"]
+body:
+  - type: textarea
+    id: historia
+    attributes:
+      label: Historia
+      description: "Como <rol>, quiero <acción>, para <beneficio>."
+    validations:
+      required: true
+  - type: input
+    id: origen
+    attributes:
+      label: Origen en la especificación
+      placeholder: "RU-05 · RN-03"
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      description: "Uno por línea, con el formato Dado / Cuando / Entonces."
+    validations:
+      required: true
+  - type: textarea
+    id: pruebas
+    attributes:
+      label: Casos de prueba
+      placeholder: "CT-05.1, CT-05.2"
