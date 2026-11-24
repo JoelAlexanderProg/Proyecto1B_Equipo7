@@ -4,6 +4,7 @@ Ejecución local: ``python -m cafeteria`` (lee ``.env``) o
 ``uvicorn cafeteria.presentacion.web:crear_app --factory``.
 """
 
+import mimetypes
 from pathlib import Path
 
 from fastapi import FastAPI, Request
@@ -34,6 +35,9 @@ from cafeteria.presentacion.plantillas import mostrar
 
 DURACION_SESION = 8 * 60 * 60
 """Una jornada de la cafetería, en segundos."""
+
+# Las imágenes slim de Linux no traen el tipo de las fuentes WOFF2.
+mimetypes.add_type("font/woff2", ".woff2")
 
 
 def crear_servicios(config: Configuracion) -> Servicios:

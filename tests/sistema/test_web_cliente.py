@@ -134,6 +134,12 @@ def test_api_de_productos_y_healthcheck(navegador):
     }
 
 
+def test_fuentes_se_sirven_con_su_tipo(navegador):
+    respuesta = navegador.get("/static/fonts/inter.woff2")
+    assert respuesta.status_code == 200
+    assert respuesta.headers["content-type"] == "font/woff2"
+
+
 def test_pagina_inexistente_muestra_error_amigable(navegador):
     pagina = navegador.get("/no-existe")
     assert pagina.status_code == 404
