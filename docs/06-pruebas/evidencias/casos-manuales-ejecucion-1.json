@@ -1,0 +1,46 @@
+{
+  "CT-M01": {
+    "total_en_vivo_tras_4_articulos": "$4,10",
+    "pantallas_360px": [
+      {
+        "pagina": "menú público",
+        "sin_desplazamiento_horizontal": true,
+        "controles": 1,
+        "alto_minimo_px": 36
+      },
+      {
+        "pagina": "menú con sesión",
+        "sin_desplazamiento_horizontal": true,
+        "controles": 29,
+        "alto_minimo_px": 20
+      },
+      {
+        "pagina": "revisión",
+        "sin_desplazamiento_horizontal": true,
+        "controles": 2,
+        "alto_minimo_px": 20
+      },
+      {
+        "pagina": "ticket",
+        "sin_desplazamiento_horizontal": true,
+        "controles": 2,
+        "alto_minimo_px": 20
+      },
+      {
+        "pagina": "mis pedidos",
+        "sin_desplazamiento_horizontal": true,
+        "controles": 1,
+        "alto_minimo_px": 20
+      }
+    ]
+  },
+  "CT-M02": {
+    "resumen_tablero": "3 pendientes\n1 en preparación\n1 listo para retirar\n0 entregados hoy",
+    "aviso_codigo_incorrecto": "Pedido B2J-9NF: no se registró la entrega. El código no coincide con este pedido. Verifícalo con el cliente; el pedido sigue en Listo para retirar.",
+    "aviso_entrega": "Pedido B2J-9NF entregado."
+  },
+  "CT-M05": {
+    "conserva_lo_escrito_tras_25s": true,
+    "recarga_sin_escritura_tras_25s": true
+  }
+}

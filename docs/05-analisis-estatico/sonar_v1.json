@@ -1,0 +1,839 @@
+{
+ "medidas": {
+  "complexity": "294",
+  "duplicated_lines_density": "0.0",
+  "software_quality_security_rating": "1.0",
+  "functions": "159",
+  "classes": "34",
+  "software_quality_security_issues": "0",
+  "software_quality_maintainability_remediation_effort": "48",
+  "statements": "1072",
+  "sqale_index": "48",
+  "sqale_rating": "1.0",
+  "bugs": "0",
+  "software_quality_reliability_issues": "6",
+  "branch_coverage": "83.6",
+  "ncloc": "2001",
+  "software_quality_reliability_rating": "3.0",
+  "line_coverage": "91.4",
+  "coverage": "90.4",
+  "reliability_rating": "1.0",
+  "code_smells": "13",
+  "security_rating": "1.0",
+  "comment_lines_density": "26.4",
+  "security_hotspots": "0",
+  "security_review_rating": "1.0",
+  "alert_status": "OK",
+  "tests": "104",
+  "cognitive_complexity": "155",
+  "software_quality_maintainability_issues": "13",
+  "files": "40",
+  "vulnerabilities": "0",
+  "software_quality_maintainability_rating": "1.0"
+ },
+ "problemas": [
+  {
+   "key": "43f1b30d-01f3-49a5-b2a4-12c2d5f7e1a3",
+   "rule": "python:S1192",
+   "severity": "CRITICAL",
+   "component": "cafepoli:src/cafeteria/presentacion/rutas_personal.py",
+   "project": "cafepoli",
+   "line": 12,
+   "hash": "538f5834da203954740a9290e6b151fb",
+   "textRange": {
+    "startLine": 12,
+    "endLine": 12,
+    "startOffset": 26,
+    "endOffset": 37
+   },
+   "flows": [
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/presentacion/rutas_personal.py",
+       "textRange": {
+        "startLine": 40,
+        "endLine": 40,
+        "startOffset": 21,
+        "endOffset": 32
+       },
+       "msg": "Duplication",
+       "msgFormattings": []
+      }
+     ]
+    },
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/presentacion/rutas_personal.py",
+       "textRange": {
+        "startLine": 78,
+        "endLine": 78,
+        "startOffset": 21,
+        "endOffset": 32
+       },
+       "msg": "Duplication",
+       "msgFormattings": []
+      }
+     ]
+    },
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/presentacion/rutas_personal.py",
+       "textRange": {
+        "startLine": 97,
+        "endLine": 97,
+        "startOffset": 21,
+        "endOffset": 32
+       },
+       "msg": "Duplication",
+       "msgFormattings": []
+      }
+     ]
+    }
+   ],
+   "status": "OPEN",
+   "message": "Define a constant instead of duplicating this literal \"/personal\" 4 times.",
+   "effort": "8min",
+   "debt": "8min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "design"
+   ],
+   "creationDate": "2026-11-24T14:05:28+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": false,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "DISTINCT",
+   "cleanCodeAttributeCategory": "ADAPTABLE",
+   "impacts": [
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "HIGH"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "6ba9e458-a805-4a0c-91d6-8c88cccda574",
+   "rule": "python:S1192",
+   "severity": "CRITICAL",
+   "component": "cafepoli:src/cafeteria/presentacion/rutas_personal.py",
+   "project": "cafepoli",
+   "line": 139,
+   "hash": "465c5289f7c3e59034d2d8acaceadd0d",
+   "textRange": {
+    "startLine": 139,
+    "endLine": 139,
+    "startOffset": 21,
+    "endOffset": 37
+   },
+   "flows": [
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/presentacion/rutas_personal.py",
+       "textRange": {
+        "startLine": 193,
+        "endLine": 193,
+        "startOffset": 21,
+        "endOffset": 37
+       },
+       "msg": "Duplication",
+       "msgFormattings": []
+      }
+     ]
+    },
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/presentacion/rutas_personal.py",
+       "textRange": {
+        "startLine": 207,
+        "endLine": 207,
+        "startOffset": 21,
+        "endOffset": 37
+       },
+       "msg": "Duplication",
+       "msgFormattings": []
+      }
+     ]
+    }
+   ],
+   "status": "OPEN",
+   "message": "Define a constant instead of duplicating this literal \"/personal/menu\" 3 times.",
+   "effort": "6min",
+   "debt": "6min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "design"
+   ],
+   "creationDate": "2026-11-24T14:05:28+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": false,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "DISTINCT",
+   "cleanCodeAttributeCategory": "ADAPTABLE",
+   "impacts": [
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "HIGH"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "6ba3bcfd-b894-47e4-8661-0d49e7871a59",
+   "rule": "python:S8409",
+   "severity": "MINOR",
+   "component": "cafepoli:src/cafeteria/presentacion/rutas_api.py",
+   "project": "cafepoli",
+   "line": 31,
+   "hash": "76312f42b7bf442806e4d1694bec3182",
+   "textRange": {
+    "startLine": 31,
+    "endLine": 31,
+    "startOffset": 43,
+    "endOffset": 72
+   },
+   "flows": [],
+   "status": "OPEN",
+   "message": "Remove this redundant \"response_model\" parameter; it duplicates the return type annotation.",
+   "effort": "2min",
+   "debt": "2min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "fastapi",
+    "api",
+    "redundant"
+   ],
+   "creationDate": "2026-11-24T14:03:20+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": false,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "CLEAR",
+   "cleanCodeAttributeCategory": "INTENTIONAL",
+   "impacts": [
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "LOW"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "2518b0d9-7f67-4aae-8bef-1cdd06aff265",
+   "rule": "python:S8409",
+   "severity": "MINOR",
+   "component": "cafepoli:src/cafeteria/presentacion/rutas_api.py",
+   "project": "cafepoli",
+   "line": 37,
+   "hash": "4b55ebd78958ef3bc9926f2f8a8227ff",
+   "textRange": {
+    "startLine": 37,
+    "endLine": 37,
+    "startOffset": 48,
+    "endOffset": 83
+   },
+   "flows": [],
+   "status": "OPEN",
+   "message": "Remove this redundant \"response_model\" parameter; it duplicates the return type annotation.",
+   "effort": "2min",
+   "debt": "2min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "fastapi",
+    "api",
+    "redundant"
+   ],
+   "creationDate": "2026-11-24T14:03:20+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": false,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "CLEAR",
+   "cleanCodeAttributeCategory": "INTENTIONAL",
+   "impacts": [
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "LOW"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "93027f91-ce60-4a93-831f-e95a14d1f6b4",
+   "rule": "python:S1192",
+   "severity": "CRITICAL",
+   "component": "cafepoli:src/cafeteria/presentacion/rutas_cliente.py",
+   "project": "cafepoli",
+   "line": 84,
+   "hash": "d734e94d2bf42506f1f3a524a9c24cc1",
+   "textRange": {
+    "startLine": 84,
+    "endLine": 84,
+    "startOffset": 25,
+    "endOffset": 36
+   },
+   "flows": [
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/presentacion/rutas_cliente.py",
+       "textRange": {
+        "startLine": 102,
+        "endLine": 102,
+        "startOffset": 25,
+        "endOffset": 36
+       },
+       "msg": "Duplication",
+       "msgFormattings": []
+      }
+     ]
+    },
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/presentacion/rutas_cliente.py",
+       "textRange": {
+        "startLine": 129,
+        "endLine": 129,
+        "startOffset": 25,
+        "endOffset": 36
+       },
+       "msg": "Duplication",
+       "msgFormattings": []
+      }
+     ]
+    },
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/presentacion/rutas_cliente.py",
+       "textRange": {
+        "startLine": 145,
+        "endLine": 145,
+        "startOffset": 25,
+        "endOffset": 36
+       },
+       "msg": "Duplication",
+       "msgFormattings": []
+      }
+     ]
+    }
+   ],
+   "status": "OPEN",
+   "message": "Define a constant instead of duplicating this literal \"/ingresar\" 4 times.",
+   "effort": "8min",
+   "debt": "8min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "design"
+   ],
+   "creationDate": "2026-11-24T14:03:20+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": false,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "DISTINCT",
+   "cleanCodeAttributeCategory": "ADAPTABLE",
+   "impacts": [
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "HIGH"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "b1d22690-8c27-4209-9906-1bb86d798773",
+   "rule": "javascript:S7773",
+   "severity": "MINOR",
+   "component": "cafepoli:src/cafeteria/presentacion/static/js/app.js",
+   "project": "cafepoli",
+   "line": 15,
+   "hash": "90730604bba5a664100fa29160a26108",
+   "textRange": {
+    "startLine": 15,
+    "endLine": 15,
+    "startOffset": 35,
+    "endOffset": 43
+   },
+   "flows": [],
+   "status": "OPEN",
+   "message": "Prefer `Number.parseInt` over `parseInt`.",
+   "effort": "2min",
+   "debt": "2min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "convention",
+    "es2015",
+    "editable-source"
+   ],
+   "creationDate": "2026-11-24T14:03:20+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": true,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "CONVENTIONAL",
+   "cleanCodeAttributeCategory": "CONSISTENT",
+   "impacts": [
+    {
+     "softwareQuality": "RELIABILITY",
+     "severity": "MEDIUM"
+    },
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "LOW"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "8655a804-e07f-4242-ac90-7019a908a057",
+   "rule": "javascript:S7773",
+   "severity": "MINOR",
+   "component": "cafepoli:src/cafeteria/presentacion/static/js/app.js",
+   "project": "cafepoli",
+   "line": 17,
+   "hash": "8475dac748a104c2560e9ba16c1bb1c5",
+   "textRange": {
+    "startLine": 17,
+    "endLine": 17,
+    "startOffset": 40,
+    "endOffset": 50
+   },
+   "flows": [],
+   "status": "OPEN",
+   "message": "Prefer `Number.parseFloat` over `parseFloat`.",
+   "effort": "2min",
+   "debt": "2min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "convention",
+    "es2015",
+    "editable-source"
+   ],
+   "creationDate": "2026-11-24T14:03:20+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": true,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "CONVENTIONAL",
+   "cleanCodeAttributeCategory": "CONSISTENT",
+   "impacts": [
+    {
+     "softwareQuality": "RELIABILITY",
+     "severity": "MEDIUM"
+    },
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "LOW"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "7bf9f7b5-f78b-42e3-a368-c6aaa405e0de",
+   "rule": "javascript:S7773",
+   "severity": "MINOR",
+   "component": "cafepoli:src/cafeteria/presentacion/static/js/app.js",
+   "project": "cafepoli",
+   "line": 27,
+   "hash": "1c100364c6e447a88dcf1b6004aefd20",
+   "textRange": {
+    "startLine": 27,
+    "endLine": 27,
+    "startOffset": 19,
+    "endOffset": 27
+   },
+   "flows": [],
+   "status": "OPEN",
+   "message": "Prefer `Number.parseInt` over `parseInt`.",
+   "effort": "2min",
+   "debt": "2min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "convention",
+    "es2015",
+    "editable-source"
+   ],
+   "creationDate": "2026-11-24T14:03:20+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": true,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "CONVENTIONAL",
+   "cleanCodeAttributeCategory": "CONSISTENT",
+   "impacts": [
+    {
+     "softwareQuality": "RELIABILITY",
+     "severity": "MEDIUM"
+    },
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "LOW"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "025612e9-8d07-463c-8f7c-c4fcb890d5c8",
+   "rule": "javascript:S7773",
+   "severity": "MINOR",
+   "component": "cafepoli:src/cafeteria/presentacion/static/js/app.js",
+   "project": "cafepoli",
+   "line": 32,
+   "hash": "bbe4f33c9b90882f69bddb5476c7b5e4",
+   "textRange": {
+    "startLine": 32,
+    "endLine": 32,
+    "startOffset": 57,
+    "endOffset": 65
+   },
+   "flows": [],
+   "status": "OPEN",
+   "message": "Prefer `Number.parseInt` over `parseInt`.",
+   "effort": "2min",
+   "debt": "2min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "convention",
+    "es2015",
+    "editable-source"
+   ],
+   "creationDate": "2026-11-24T14:03:20+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": true,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "CONVENTIONAL",
+   "cleanCodeAttributeCategory": "CONSISTENT",
+   "impacts": [
+    {
+     "softwareQuality": "RELIABILITY",
+     "severity": "MEDIUM"
+    },
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "LOW"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "e1ece687-7681-4549-aa64-26b434959299",
+   "rule": "javascript:S7773",
+   "severity": "MINOR",
+   "component": "cafepoli:src/cafeteria/presentacion/static/js/app.js",
+   "project": "cafepoli",
+   "line": 32,
+   "hash": "bbe4f33c9b90882f69bddb5476c7b5e4",
+   "textRange": {
+    "startLine": 32,
+    "endLine": 32,
+    "startOffset": 21,
+    "endOffset": 29
+   },
+   "flows": [],
+   "status": "OPEN",
+   "message": "Prefer `Number.parseInt` over `parseInt`.",
+   "effort": "2min",
+   "debt": "2min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "convention",
+    "es2015",
+    "editable-source"
+   ],
+   "creationDate": "2026-11-24T14:03:20+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": true,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "CONVENTIONAL",
+   "cleanCodeAttributeCategory": "CONSISTENT",
+   "impacts": [
+    {
+     "softwareQuality": "RELIABILITY",
+     "severity": "MEDIUM"
+    },
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "LOW"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "2c89e0f9-4a9b-408c-a4ab-c6dea4ac7b32",
+   "rule": "javascript:S7773",
+   "severity": "MINOR",
+   "component": "cafepoli:src/cafeteria/presentacion/static/js/app.js",
+   "project": "cafepoli",
+   "line": 43,
+   "hash": "ad21141a923fe1d3b1b655d6aa2df223",
+   "textRange": {
+    "startLine": 43,
+    "endLine": 43,
+    "startOffset": 19,
+    "endOffset": 27
+   },
+   "flows": [],
+   "status": "OPEN",
+   "message": "Prefer `Number.parseInt` over `parseInt`.",
+   "effort": "2min",
+   "debt": "2min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "convention",
+    "es2015",
+    "editable-source"
+   ],
+   "creationDate": "2026-11-24T14:03:20+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": true,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "CONVENTIONAL",
+   "cleanCodeAttributeCategory": "CONSISTENT",
+   "impacts": [
+    {
+     "softwareQuality": "RELIABILITY",
+     "severity": "MEDIUM"
+    },
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "LOW"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "72bc1403-78bd-4aba-b366-78464a04a885",
+   "rule": "python:S5886",
+   "severity": "MAJOR",
+   "component": "cafepoli:src/cafeteria/infraestructura/repositorios.py",
+   "project": "cafepoli",
+   "line": 176,
+   "hash": "59183763da0ef05f819ebea485c5d813",
+   "textRange": {
+    "startLine": 176,
+    "endLine": 176,
+    "startOffset": 15,
+    "endOffset": 61
+   },
+   "flows": [
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/infraestructura/repositorios.py",
+       "textRange": {
+        "startLine": 150,
+        "endLine": 150,
+        "startOffset": 8,
+        "endOffset": 15
+       },
+       "msg": "Function definition.",
+       "msgFormattings": []
+      }
+     ]
+    },
+    {
+     "locations": [
+      {
+       "component": "cafepoli:src/cafeteria/infraestructura/repositorios.py",
+       "textRange": {
+        "startLine": 150,
+        "endLine": 150,
+        "startOffset": 43,
+        "endOffset": 50
+       },
+       "msg": "Type hint.",
+       "msgFormattings": []
+      }
+     ]
+    }
+   ],
+   "status": "OPEN",
+   "message": "Return a value of type \"Cliente\" instead of \"DataclassInstance\" or update function \"agregar\" type hint.",
+   "effort": "5min",
+   "debt": "5min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "typing"
+   ],
+   "creationDate": "2026-11-24T12:09:32+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "MAIN",
+   "quickFixAvailable": false,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "LOGICAL",
+   "cleanCodeAttributeCategory": "INTENTIONAL",
+   "impacts": [
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "MEDIUM"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  },
+  {
+   "key": "c1ed000a-fa5e-4561-bdee-acb84866cfa3",
+   "rule": "python:S5778",
+   "severity": "MAJOR",
+   "component": "cafepoli:tests/integracion/test_servicios.py",
+   "project": "cafepoli",
+   "line": 104,
+   "hash": "b26cf8f5d667f433f12b307c3931e98a",
+   "textRange": {
+    "startLine": 104,
+    "endLine": 104,
+    "startOffset": 4,
+    "endOffset": 49
+   },
+   "flows": [
+    {
+     "locations": [
+      {
+       "component": "cafepoli:tests/integracion/test_servicios.py",
+       "textRange": {
+        "startLine": 105,
+        "endLine": 105,
+        "startOffset": 24,
+        "endOffset": 76
+       },
+       "msg": "Invocation possibly throwing an exception.",
+       "msgFormattings": []
+      }
+     ]
+    },
+    {
+     "locations": [
+      {
+       "component": "cafepoli:tests/integracion/test_servicios.py",
+       "textRange": {
+        "startLine": 105,
+        "endLine": 105,
+        "startOffset": 43,
+        "endOffset": 71
+       },
+       "msg": "Invocation possibly throwing an exception.",
+       "msgFormattings": []
+      }
+     ]
+    }
+   ],
+   "status": "OPEN",
+   "message": "Refactor this exception test to have only one invocation possibly throwing an exception.",
+   "effort": "5min",
+   "debt": "5min",
+   "author": "joelalexanderprog@gmail.com",
+   "tags": [
+    "tests",
+    "pytest",
+    "unittest"
+   ],
+   "creationDate": "2026-11-24T12:09:32+0000",
+   "updateDate": "2026-11-24T14:22:09+0000",
+   "type": "CODE_SMELL",
+   "scope": "TEST",
+   "quickFixAvailable": false,
+   "messageFormattings": [],
+   "codeVariants": [],
+   "cleanCodeAttribute": "CLEAR",
+   "cleanCodeAttributeCategory": "INTENTIONAL",
+   "impacts": [
+    {
+     "softwareQuality": "MAINTAINABILITY",
+     "severity": "MEDIUM"
+    }
+   ],
+   "issueStatus": "OPEN",
+   "prioritizedRule": false,
+   "fromSonarQubeUpdate": false,
+   "internalTags": [],
+   "linkedTicketStatus": "NOT_LINKED"
+  }
+ ],
+ "hotspots": [],
+ "lenguajes": {
+  "ncloc_language_distribution": "css=169;js=49;py=1390;web=393"
+ }
+}
