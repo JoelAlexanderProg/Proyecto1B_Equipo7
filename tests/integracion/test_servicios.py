@@ -101,8 +101,9 @@ def test_revisar_calcula_total_sin_guardar(sistema, ana):
 
 
 def test_producto_no_disponible_no_se_confirma(sistema, ana):
+    humita = codigo_de(sistema, "Humita")
     with pytest.raises(exc.ProductoNoDisponible):
-        sistema.pedidos.confirmar(ana.id, {codigo_de(sistema, "Humita"): 1})
+        sistema.pedidos.confirmar(ana.id, {humita: 1})
     assert sistema.pedidos.pedidos_de_cliente(ana.id) == []
 
 

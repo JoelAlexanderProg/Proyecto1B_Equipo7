@@ -279,6 +279,26 @@ class Cliente:
         """Iniciales del nombre y del apellido, por ejemplo ``AP``."""
         return f"{self.nombre[0]}{self.apellido[0]}".upper()
 
+    def con_identidad(self, cliente_id: int, codigo: str) -> Cliente:
+        """Devuelve el mismo cliente con el id y el código asignados al guardarlo.
+
+        Args:
+            cliente_id: clave asignada por la base de datos.
+            codigo: código de cliente, por ejemplo ``CLI-0001``.
+
+        Returns:
+            Cliente: una copia con la identidad asignada; el original no cambia.
+        """
+        return Cliente(
+            codigo=codigo,
+            nombre=self.nombre,
+            apellido=self.apellido,
+            cedula=self.cedula,
+            celular=self.celular,
+            correo=self.correo,
+            id=cliente_id,
+        )
+
 
 @dataclass(frozen=True)
 class DetallePedido:

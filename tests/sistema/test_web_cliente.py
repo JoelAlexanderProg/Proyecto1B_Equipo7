@@ -144,3 +144,34 @@ def test_pagina_inexistente_muestra_error_amigable(navegador):
     pagina = navegador.get("/no-existe")
     assert pagina.status_code == 404
     assert "No encontramos esa página" in pagina.text
+
+
+def test_rutas_del_cliente_exigen_sesion(navegador):
+    assert navegador.post("/pedido/confirmar", data={"total_revisado": "1"}).url.path == "/ingresar"
+    assert navegador.get("/pedidos/AAA-AAA").url.path == "/ingresar"
+
+
+def test_pedido_inexistente_responde_404(navegador):
+    registrar(navegador)
+    assert navegador.get("/pedidos/AAA-AAA").status_code == 404
+
+
+def test_total_revisado_alterado_no_confirma(navegador, servicios):
+    registrar(navegador)
+    navegador.post("/pedido/revisar", data={f"cant-{CAFE}": "1", "otro-campo": "x"})
+    pagina = navegador.post("/pedido/confirmar", data={"total_revisado": "no-es-un-monto"})
+    assert "Un precio cambió" in pagina.text
+    assert servicios.pedidos.pedidos_de_cliente(1) == []
+
+
+def test_registro_duplicado_muestra_el_motivo(navegador, otro_navegador):
+    registrar(navegador)
+    pagina = registrar(otro_navegador)
+    assert pagina.status_code == 422
+    assert "Ya existe un cliente con esa cédula" in pagina.text
+
+
+def test_api_inexistente_responde_json(navegador):
+    respuesta = navegador.get("/api/v1/no-existe")
+    assert respuesta.status_code == 404
+    assert respuesta.json() == {"detail": "Not Found"}

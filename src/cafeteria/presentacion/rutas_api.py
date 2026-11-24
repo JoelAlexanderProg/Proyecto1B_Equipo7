@@ -28,13 +28,13 @@ class ProductoSalida(BaseModel):
     disponible: bool
 
 
-@router.get("/health", tags=["operación"], response_model=EstadoServicio)
+@router.get("/health", tags=["operación"])
 def salud() -> EstadoServicio:
     """Indica que la aplicación responde; lo usa el HEALTHCHECK de Docker."""
     return EstadoServicio(estado="ok", version=__version__)
 
 
-@router.get("/api/v1/productos", tags=["menú"], response_model=list[ProductoSalida])
+@router.get("/api/v1/productos", tags=["menú"])
 def listar_productos(request: Request, disponibles: bool = False) -> list[ProductoSalida]:
     """Devuelve el menú ordenado por categoría y nombre (RU-01).
 

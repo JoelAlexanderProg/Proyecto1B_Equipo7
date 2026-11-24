@@ -121,3 +121,33 @@ def test_editar_producto_inexistente_responde_404(personal):
 def test_salir_del_personal(personal):
     personal.post("/personal/salir")
     assert personal.get("/personal").url.path == "/personal/ingresar"
+
+
+def test_acciones_del_personal_exigen_sesion(navegador):
+    for ruta in ("/personal/pedidos/1/avanzar", "/personal/pedidos/1/entregar", "/personal/menu"):
+        assert navegador.post(ruta).url.path == "/personal/ingresar"
+    for ruta in (f"/personal/menu/{CAFE}", f"/personal/menu/{CAFE}/disponibilidad"):
+        assert navegador.post(ruta).url.path == "/personal/ingresar"
+    assert navegador.get(f"/personal/menu/{CAFE}").url.path == "/personal/ingresar"
+
+
+def test_pedido_inexistente_en_el_tablero(personal):
+    assert "No encontramos ese pedido" in personal.post("/personal/pedidos/999/avanzar").text
+    assert personal.post("/personal/pedidos/999/entregar", data={"codigo": "x"}).status_code == 404
+
+
+def test_formulario_de_edicion_muestra_los_datos(personal):
+    pagina = personal.get(f"/personal/menu/{CAFE}")
+    assert pagina.status_code == 200
+    assert 'value="Café pasado"' in pagina.text
+    assert 'value="0,75"' in pagina.text
+
+
+def test_editar_con_datos_invalidos_no_guarda(personal, servicios):
+    datos = {"nombre": "", "categoria": "BEBIDA", "precio": "0,75", "disponible": "1"}
+    pagina = personal.post(f"/personal/menu/{CAFE}", data=datos)
+    assert pagina.status_code == 422
+    assert "Escribe el nombre del producto" in pagina.text
+    assert servicios.menu.obtener(CAFE).nombre == "Café pasado"
+    assert personal.post("/personal/menu/ALI-999", data=datos).status_code == 404
+    assert personal.post("/personal/menu/ALI-999/disponibilidad").status_code == 404

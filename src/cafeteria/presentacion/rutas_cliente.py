@@ -15,6 +15,7 @@ from cafeteria.presentacion.plantillas import avisar, mostrar, redirigir
 router = APIRouter(include_in_schema=False)
 
 PREFIJO_CANTIDAD = "cant-"
+RUTA_INGRESO = "/ingresar"
 Campo = Annotated[str, Form()]
 
 
@@ -81,7 +82,7 @@ async def revisar_pedido(request: Request) -> Response:
     """Valida la selección y muestra el total antes de confirmar (HU-02, HU-03)."""
     cliente = cliente_actual(request)
     if cliente is None:
-        return redirigir("/ingresar")
+        return redirigir(RUTA_INGRESO)
     try:
         cantidades = leer_cantidades(await request.form())
         request.session["borrador"] = cantidades
@@ -99,7 +100,7 @@ def confirmar_pedido(request: Request, total_revisado: Campo = "") -> Response:
     """
     cliente = cliente_actual(request)
     if cliente is None:
-        return redirigir("/ingresar")
+        return redirigir(RUTA_INGRESO)
     cantidades = request.session.get("borrador") or {}
     pedidos = servicios(request).pedidos
     try:
@@ -126,7 +127,7 @@ def ver_pedido(request: Request, codigo: str) -> Response:
     """Ticket con el código de retiro y el seguimiento del estado (HU-05)."""
     cliente = cliente_actual(request)
     if cliente is None:
-        return redirigir("/ingresar")
+        return redirigir(RUTA_INGRESO)
     try:
         pedido = servicios(request).pedidos.obtener_por_codigo(codigo.upper())
     except exc.PedidoNoEncontrado:
@@ -142,18 +143,18 @@ def mis_pedidos(request: Request) -> Response:
     """Lista de los pedidos del cliente con su estado (HU-05)."""
     cliente = cliente_actual(request)
     if cliente is None:
-        return redirigir("/ingresar")
+        return redirigir(RUTA_INGRESO)
     pedidos = servicios(request).pedidos.pedidos_de_cliente(cliente.id)
     return mostrar(request, "cliente/mis_pedidos.html", {"cliente": cliente, "pedidos": pedidos})
 
 
-@router.get("/ingresar", response_class=HTMLResponse)
+@router.get(RUTA_INGRESO, response_class=HTMLResponse)
 def formulario_ingreso(request: Request) -> HTMLResponse:
     """Formulario de ingreso con correo y cédula (supuesto A1)."""
     return mostrar(request, "cliente/ingresar.html", {"datos": {}})
 
 
-@router.post("/ingresar")
+@router.post(RUTA_INGRESO)
 def ingresar(request: Request, correo: Campo = "", cedula: Campo = "") -> Response:
     """Identifica al cliente y guarda su id en la sesión."""
     try:
