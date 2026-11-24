@@ -1,0 +1,40 @@
+[project]
+name = "cafeteria"
+version = "1.0.0"
+description = "CaféPoli: pedidos anticipados, seguimiento y retiro con código para la cafetería universitaria (Proyecto IB, ISWD633, Equipo 7)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.165.0",
+    "uvicorn==0.54.0",
+    "jinja2==3.1.6",
+    "python-multipart==0.0.34",
+    "itsdangerous==2.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.2.0",
+    "pytest-cov==7.1.0",
+    "httpx==0.28.1",
+    "ruff==0.17.6",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.coverage.run]
+source = ["src/cafeteria"]
+branch = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "SIM"]
+# N818 pide el sufijo "Error" en inglés; el dominio usa los términos en español de la especificación.
+ignore = ["N818"]
